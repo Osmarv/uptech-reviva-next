@@ -1,14 +1,15 @@
 import { MainMenuWrapper, MainMenuList, MainMenuLink } from "./mainMenuStyles";
+import Link from 'next/link';
 
 function MainMenu () {
 return(
     <MainMenuWrapper>
         <MainMenuList>
-            <MainMenuLink href="/"><li>Página Inicial</li></MainMenuLink>
-            <MainMenuLink href="/masculino"><li>Masculino</li></MainMenuLink>
-            <MainMenuLink href="/feminino"><li>Feminino</li></MainMenuLink>
-            <MainMenuLink href="/infantil"><li>Infantil</li></MainMenuLink>
-            <MainMenuLink href="/manual de moda"><li>Manual de Moda</li></MainMenuLink>
+            <Link href="/"><MainMenuLink>Página Inicial</MainMenuLink></Link>
+            <Link href="/masculino"><MainMenuLink>Masculino</MainMenuLink></Link>
+            <Link href="/feminino"><MainMenuLink>Feminino</MainMenuLink></Link>
+            <Link href="/infantil"><MainMenuLink>Infantil</MainMenuLink></Link>
+            <Link href="/manual de moda"><MainMenuLink>Manual de Moda</MainMenuLink></Link>
         </MainMenuList>
     </MainMenuWrapper>
 )

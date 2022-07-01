@@ -18,9 +18,15 @@ const H2 = styled.h2`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 `;
 
+import Head from "next/head";
+
 function Index() {
   return (
     <>
+      <Head>
+        <title>Reviva Next</title>
+        <link rel="icon" href='/images/rchlo-logo.png' />
+      </Head>
       <Header />
       <Main>
         <MainMenu />

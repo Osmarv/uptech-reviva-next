@@ -8,6 +8,7 @@ import {
   ProductListListItens,
   ProductListSizes,
   ProductListSizesItems,
+  ProductImage,
   ItemPrice,
   ItemText,
   AddToBagButton,
@@ -37,7 +38,7 @@ const Products: React.FC = () => {
         <div key={item.id}>
           <ProductListListItens>
             <Link href={"detalhes"}>
-              <img
+              <ProductImage
                 src={item.imagens[0].url}
                 alt={item.imagens[0].descricao}
                 width="269px"

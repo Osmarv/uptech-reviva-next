@@ -76,3 +76,8 @@ export const ShoppingCart = styled.button`
     border: none;
     grid-column-start: 8;
 `
+export const ProductImage = styled.img`
+    &: hover{
+        cursor: pointer;
+    }
+`

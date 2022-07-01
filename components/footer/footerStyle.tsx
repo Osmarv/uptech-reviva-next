@@ -42,7 +42,7 @@ export const FooterMenuList = styled.ul`
     display: flex;
     flex-direction: column;
 `;
-export const FooterMenuItens = styled.li`
+export const FooterMenuItens = styled.ul`
     margin: 0.5rem 0;
 `
 export const FooterMenuLink = styled.a`
