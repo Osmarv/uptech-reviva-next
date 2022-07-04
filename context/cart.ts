@@ -1,4 +1,4 @@
 import { createContext } from 'react';
-import { Items } from '../pages/data';
+import { Items } from '../data/data';
 
 export const CartContext = createContext<Items[]>([]);

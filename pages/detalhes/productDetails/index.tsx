@@ -1,33 +1,127 @@
 import React, { useEffect, useState } from "react";
 //import { useParams } from "react-router-dom";
 //import { Items } from "../../home/data";
-import { Items } from "../../data";
-import {
-  ProductDetailsDescription,
-  ProductDetailsDescriptionName,
-  ProductDetailsDescriptionText,
-  ProductDetailsImage,
-  ProductDetailsPrice,
-  ProductDetailsSideInfos,
-  ProductDetailsWrapper,
-  Thumbnails,
-  Sizes,
-  Size,
-  DetailRadio,
-  AddToBagButton,
-  CardInner,
-  CardFront,
-  CardFrontText,
-  ShoppingCart,
-  Section,
-} from "./detailsStyle";
+import { Items } from "../../../data/data";
 import { useProduct } from "../../../context/ProductContext";
-import Image from "next/image";
+import styled from "styled-components";
+
+const Section = styled.section`
+	background-color: #E0E0E0;
+`
+const ProductDetailsWrapper = styled.div`
+	margin: 1.5rem;
+	display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const ProductDetailsImage = styled.div`
+  margin-right: 1rem;
+`;
+
+const ProductDetailsSideInfos = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const ProductDetailsDescription = styled.div`
+	display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const ProductDetailsDescriptionName = styled.div`
+	display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const ProductDetailsPrice = styled.p`
+	margin-top: 0.5rem;
+	font-weight: bold;
+	color: chocolate;
+	align-self: center;
+`;
+
+const ProductDetailsDescriptionText = styled.p`
+	margin: 0.5rem 0;
+`;
+
+const Thumbnails = styled.div`
+	display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 3rem;
+`;
+
+const Sizes = styled.div`
+	display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+`;
+
+const Size = styled.label`
+	margin: 0.5rem 0.5rem 0.5rem;
+  padding: 0.3rem;
+  border: 1px solid #C4C4C4;
+`;
+
+const DetailRadio = styled.input`
+	display: none;
+	&:checked{
+		+${Size}{
+			background-color: #008844;
+			color: white;
+		}
+	}
+`;
+
+const AddToBagButton = styled.div`
+	color: #FFFFFF;
+  background-color: #008844;
+  border-radius: 4px;
+  display: grid;
+	grid-template-columns: auto auto auto auto auto auto auto auto;
+	margin: 0.5rem 0;
+	perspective: 500px;
+`;
+
+const CardInner = styled.div`
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+	display: grid;
+	transition: transform 0.8s;
+	transform-style: preserve-3d;
+	grid-column-start: 1;
+	grid-column-end: 8;
+`;
+
+const CardFront = styled.div`
+	display: grid;
+  backface-visibility: hidden;
+`;
+
+const CardFrontText = styled.p`
+	font-size: 0.8em;
+	grid-column-start: 3;
+	grid-column-end: 6;
+	align-self: center;
+`;
+
+const ShoppingCart = styled.button`
+	border-radius: 4px;
+	background-color: #008844;
+	border: none;
+	grid-column-start: 8;
+`;
+
+import { useRouter } from "next/router";
 
 function ProductDetails() {
+  const router = useRouter();
+  const idProduct = router.query.id;
+
   const [product, setProduct] = useState<Items>();
-  //const idProduct = useParams().id;
-  const idProduct = 2;
   const { products } = useProduct();
 
   useEffect(() => {

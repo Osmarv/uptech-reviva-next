@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { estoque, Items } from "../pages/data";
+import { estoque, Items } from "../data/data";
 
 type PropsProductContext = {
   products: Items[];

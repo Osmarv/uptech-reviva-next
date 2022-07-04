@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { Items } from "../pages/data";
+import { Items } from "../data/data";
 
 type PropsCartContext = {
   cart: Items[];
@@ -21,7 +21,9 @@ export const CartContext: React.FC<Props> = ({ children }) => {
   const [cart, setCarts] = useState(DEFAULT_VALUE.cart);
   console.log("cart :>> ", cart);
   return (
-    <context.Provider value={{ cart, setCarts }}>{children}</context.Provider>
+    <context.Provider value={{ cart, setCarts }}>
+      {children}
+    </context.Provider>
   );
 };
 

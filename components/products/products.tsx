@@ -1,6 +1,6 @@
 //import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { Items } from "../../pages/data";
+import { Items } from "../../data/data";
 //import { useRecoilState } from "recoil";
 //import { cartState, productsState } from '../../atoms'
 import {
@@ -27,9 +27,11 @@ const Products: React.FC = () => {
   //   const [, setProducts] = useState<Items[]>([]);
   const { products } = useProduct();
   const { cart, setCarts } = useCart();
-
+    
   function addProducts(product: Items): void {
     setCarts([...cart, product]);
+    console.log("cart")
+    console.log(cart);
   }
 
   return (
@@ -37,7 +39,7 @@ const Products: React.FC = () => {
       {products.map((item) => (
         <div key={item.id}>
           <ProductListListItens>
-            <Link href={"detalhes"}>
+            <Link href={{pathname:'/detalhes', query:{id: item.id}}}>
               <ProductImage
                 src={item.imagens[0].url}
                 alt={item.imagens[0].descricao}
