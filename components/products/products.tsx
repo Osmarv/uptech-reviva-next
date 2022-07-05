@@ -21,18 +21,20 @@ import { useEffect, useState } from "react";
 const Products: React.FC = () => {
   //const [cart, setCart] = useRecoilState(cartState)
   //const [products, setProducts] = useRecoilState(productsState)
-
-  //const { products, setProducts } = useProduct();
-  const [products, setProducts] = useState<Items[]>([]);
   //const { cart, setCarts } = useCart();
+  //const { products, setProducts } = useProduct();
+
+  const [products, setProducts] = useState<Items[]>([]);
   const [cart, setCarts] = useState<Items[]>([]);
   
 
   useEffect(() => {
+    
+
     fetch("/api/products")
       .then((response) => response.json())
       .then(({ data }) => {
-        console.log("products :>> ", data);
+        console.log("products 04:>> ", data);
         setProducts(data);
       })
       
@@ -41,16 +43,32 @@ const Products: React.FC = () => {
       });
   }, []);
 
-  // useEffect(() => {
-    
-  //    console.log("novos produtos :>> ", products);
-     
-  // }, [products]);
+  // function addProducts(product: Items): void {
+  //   setCarts([...cart, product]);
+  //   console.log("cart")
+  //   console.log(cart);
+  // }
 
   function addProducts(product: Items): void {
-    setCarts([...cart, product]);
-    console.log("cart")
-    console.log(cart);
+    // setCarts([...cart, product]);
+    // console.log("cart")
+    // console.log(cart);
+    if (typeof window !== 'undefined') {
+      console.log('You are on the browser')// 👉️ can use localStorage here
+    } else {
+      console.log('You are on the server')// 👉️ can't use localStorage
+    }
+    console.log("product 01: ", localStorage.getItem('products'));
+
+    const quantidade = 1;
+
+    const response = fetch('/api/cart', {
+      method: 'POST',
+      body: JSON.stringify({ product, quantidade }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
   }
 
   return (

@@ -127,7 +127,7 @@ function ProductDetails() {
     fetch(`/api/products/${idProduct}`)
       .then((response) => response.json())
       .then(({ data }) => {
-        console.log("products :>> ", data);
+        console.log("products 03 :>> ", data);
         setProduct(data);
       })
       
