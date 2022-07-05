@@ -1,8 +1,5 @@
-//import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { Items } from "../../data/data";
-//import { useRecoilState } from "recoil";
-//import { cartState, productsState } from '../../atoms'
+import { estoque2, estoque, Items } from "../../data/data";
 import {
   ProductList,
   ProductListListItens,
@@ -19,15 +16,37 @@ import {
 } from "./productsStyle";
 import { useProduct } from "../../context/ProductContext";
 import { useCart } from "../../context/CartContext";
+import { useEffect, useState } from "react";
 
 const Products: React.FC = () => {
   //const [cart, setCart] = useRecoilState(cartState)
-  //const [, setProducts] = useRecoilState(productsState)
-  // const [cart, setCart] = useState<Items[]>([]);
-  //   const [, setProducts] = useState<Items[]>([]);
-  const { products } = useProduct();
-  const { cart, setCarts } = useCart();
+  //const [products, setProducts] = useRecoilState(productsState)
+
+  //const { products, setProducts } = useProduct();
+  const [products, setProducts] = useState<Items[]>([]);
+  //const { cart, setCarts } = useCart();
+  const [cart, setCarts] = useState<Items[]>([]);
+  
+
+  useEffect(() => {
+    fetch("/api/products")
+      .then((response) => response.json())
+      .then(({ data }) => {
+        console.log("products :>> ", data);
+        setProducts(data);
+      })
+      
+      .catch((error) => {
+        console.log("error :>> ", error);
+      });
+  }, []);
+
+  // useEffect(() => {
     
+  //    console.log("novos produtos :>> ", products);
+     
+  // }, [products]);
+
   function addProducts(product: Items): void {
     setCarts([...cart, product]);
     console.log("cart")
@@ -36,7 +55,7 @@ const Products: React.FC = () => {
 
   return (
     <ProductList>
-      {products.map((item) => (
+      {products?.map((item) => (
         <div key={item.id}>
           <ProductListListItens>
             <Link href={{pathname:'/detalhes', query:{id: item.id}}}>

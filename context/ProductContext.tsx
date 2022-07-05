@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { estoque, Items } from "../data/data";
+import { estoque, estoque2, Items } from "../data/data";
 
 type PropsProductContext = {
   products: Items[];
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const DEFAULT_VALUE = {
-  products: estoque,
+  products: estoque2,
   setProducts: () => {},
 };
 

@@ -122,13 +122,18 @@ function ProductDetails() {
   const idProduct = router.query.id;
 
   const [product, setProduct] = useState<Items>();
-  const { products } = useProduct();
 
   useEffect(() => {
-    const result = products.find((p) => p.id === Number(idProduct));
-    if (result) {
-      setProduct(result);
-    }
+    fetch(`/api/products/${idProduct}`)
+      .then((response) => response.json())
+      .then(({ data }) => {
+        console.log("products :>> ", data);
+        setProduct(data);
+      })
+      
+      .catch((error) => {
+        console.log("error :>> ", error);
+      });
   }, []);
 
   return (
