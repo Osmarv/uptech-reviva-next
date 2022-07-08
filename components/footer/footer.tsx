@@ -40,19 +40,19 @@ function Footer() {
             <H3>Menu</H3>
             <FooterMenuList>
               <FooterMenuItens>
-                <FooterMenuLink href=" ">Página Inicial</FooterMenuLink>
+                <FooterMenuLink href="/">Página Inicial</FooterMenuLink>
               </FooterMenuItens>
               <FooterMenuItens>
-                <FooterMenuLink href=" ">Masculino</FooterMenuLink>
+                <FooterMenuLink href="/masculino ">Masculino</FooterMenuLink>
               </FooterMenuItens>
               <FooterMenuItens>
-                <FooterMenuLink href=" ">Feminino</FooterMenuLink>
+                <FooterMenuLink href="/feminino">Feminino</FooterMenuLink>
               </FooterMenuItens>
               <FooterMenuItens>
-                <FooterMenuLink href=" ">Infantil</FooterMenuLink>
+                <FooterMenuLink href="/infantil">Infantil</FooterMenuLink>
               </FooterMenuItens>
               <FooterMenuItens>
-                <FooterMenuLink href=" ">Manual de Moda</FooterMenuLink>
+                <FooterMenuLink href="/manualdemoda">Manual de Moda</FooterMenuLink>
               </FooterMenuItens>
             </FooterMenuList>
           </nav>
@@ -87,14 +87,14 @@ function Footer() {
           <FooterWhatsapp>
             <FooterContactText>Whatsapp</FooterContactText>
             <img
-              src={process.env.PUBLIC_URL + "/images/whatsapp-logo.png"}
+              src={"/images/whatsapp-logo.png"}
               alt="logo do whatsapp "
             />
           </FooterWhatsapp>
           <FooterTelephone>
             <FooterContactText>11 2123-3321</FooterContactText>
             <img
-              src={process.env.PUBLIC_URL + "/images/telephone-logo.png"}
+              src={"/images/telephone-logo.png"}
               alt="logo do telefone "
             />
           </FooterTelephone>
@@ -107,7 +107,7 @@ function Footer() {
               type="email "
               id="email "
               placeholder="Digite seu email "
-              defaultValue="Search..."
+              defaultValue="Digite seu email"
             />
             <FooterNewsletterButton type="submit " value="CADASTRAR " />
           </FooterNewsletterDiv>
